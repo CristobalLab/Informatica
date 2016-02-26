@@ -3,7 +3,7 @@
 #include <Windows.h>
 #define SIZE_OF_LINE 255
 
-//DefiniciÛn de las funciones
+//Definici√≥n de las funciones
 
 //Leer matriz
 int** read_matrix(const char* filename, int* n, int* m){
@@ -26,12 +26,12 @@ int** read_matrix(const char* filename, int* n, int* m){
 		if (token=='d'){
 			//Copiamos la linea en el array "line"
 			fgets(line,SIZE_OF_LINE,f);
-			//Comprobamos que la dimensiÛn sea correcta
+			//Comprobamos que la dimensi√≥n sea correcta
 			if(sscanf(line,"%d %d",n,m)!=2){
 				puts("Error de dimension\n");
 				return NULL;
 			}
-			//Si es correcta, asignamos memoria din·mica
+			//Si es correcta, asignamos memoria din√°mica
 			matrix=(int**)malloc(sizeof(int*)*(*n));
 			for (i=0; i<(*n);i++){
 				matrix[i]=(int*)malloc(sizeof(int)*(*m));
@@ -72,11 +72,12 @@ void print_matrix(int n, int m, int **matrix){
 //Liberar memoria
 void free_matrix(int n, int m, int ** matrix){
 	int i;
+	if(matrix!=NULL){
 	free(matrix);
 	for (i=0;i<n;i++){
 		free(matrix[i]);
 	}
-	
+	}
 }
 
 
